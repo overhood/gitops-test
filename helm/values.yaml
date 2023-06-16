@@ -1,0 +1,14 @@
+frontend:
+  replicaCount: 1
+
+  image:
+    repository: registry-intl.ap-northeast-1.aliyuncs.com/acr-individual/circle-test
+    tag: "0.1.33"
+
+  service:
+    type: LoadBalancer
+    port: 80
+
+  ingress:
+    enabled: false
+    host: guestbook.ack.production.com

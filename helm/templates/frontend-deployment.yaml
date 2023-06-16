@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: circle-test-app
+  labels:
+    app: circle-test-app
+spec:
+  selector:
+    matchLabels:
+      app: circle-test-app
+      tier: circle-test-app
+  replicas: {{ .Values.frontend.replicaCount }}
+  template:
+    metadata:
+      labels:
+        app: circle-test-app
+        tier: circle-test-app
+    spec:
+      containers:
+        - name: circle-test-app
+          image: {{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag }}
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 100m
+              memory: 100Mi
+          ports:
+            - containerPort: 80
