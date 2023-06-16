@@ -2,8 +2,10 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: circle-test-app
+  namespace: default
   labels:
     app: circle-test-app
+    
 spec:
   selector:
     matchLabels:
